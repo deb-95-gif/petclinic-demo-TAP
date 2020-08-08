@@ -22,7 +22,7 @@ pipeline {
         steps{
         echo "Building Docker Image"
         script {
-          dockerImage = docker.build registry + "$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
           }
         }
@@ -41,7 +41,7 @@ pipeline {
     stage ('Deploy to Dev') {
         steps{
         echo "Deploying to Dev Environment"
-        sh "docker run -d --name=petclinic -p 8081:8080 1995bhowmick/petclinic:latest"
+        sh "docker run -d --name=petclinic -p 8081:8080 1995bhowmick/petclinic"
             }
            }
           }
